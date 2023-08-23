@@ -40,3 +40,7 @@ body {
   margin: 10px 0;
   font-size: 16px;
 }
+#boton-borrar{ /* estilo al boton */
+  border-radius: 5px;
+  align-items: center;
+}

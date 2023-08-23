@@ -1,26 +1,26 @@
-var formulario = document.querySelector("#form")
+var formulario = document.forms["form"]//#se elimina el #
 
-formulario.onsubmit = function(e) {
+formulario.addEventListener("submit", function(e) {
 
-  e.prevent();
+  e.preventDefault();
   
-  var n = formulario.elements[0]
-  var e = formulario.elements[1]
-  var na = formulario.elements[2]
+  var name = formulario.elements["name"]//se cambian en nombre de variables
+  var age = formulario.elements["age"]
+  var nationality = formulario.elements["nationality"]
 
-  var nombre = n.value
-  var edad = e.value
+  var nombre = name.value
+  var edad = age.value
 
-  var i = na.selectedIndex
-  var nacionalidad = na.options[i].value
+  var i = nationality.selectedIndex//se modifican las variables en todo
+  var nacionalidad = nationality.options[i].value
   console.log(nombre, edad)
   console.log(nacionalidad)
 
   if (nombre.length === 0) {
-    n.classList.add("error")
+    name.classList.add("error")
   }
   if (edad < 18 || edad > 120) {
-    e.classList.add("error")
+    age.classList.add("error")
   }
 
 if (nombre.length > 0 
@@ -28,11 +28,13 @@ if (nombre.length > 0
     && edad < 120) ) {
   agregarInvitado(nombre, edad, nacionalidad)
   }
-}
+}); //se engloba toda la funcion
 
 var botonBorrar = document.createElement("button")
 botonBorrar.textContent = "Eliminar invitado"
 botonBorrar.id = "boton-borrar"
+
+
 var corteLinea = document.createElement("br")
 document.body.appendChild(corteLinea)
 document.body.appendChild(botonBorrar);
@@ -55,17 +57,17 @@ function agregarInvitado(nombre, edad, nacionalidad) {
 var lista = document.getElementById("lista-de-invitados")
 
 var elementoLista = document.createElement("div")
-elementoLista.classList.added("elemento-lista")
+elementoLista.classList.add("elemento-lista") //added a .add asi aparece la list
 lista.appendChild(elementoLista)
 
-var spanNombre = document.createElement("span")
+/* var spanNombre = document.createElement("span") 
 var inputNombre = document.createElement("input")
 var espacio = document.createElement("br")
 spanNombre.textContent = "Nombre: "
 inputNombre.value = nombre 
 elementoLista.appendChild(spanNombre)
 elementoLista.appendChild(inputNombre)
-elementoLista.appendChild(espacio)
+elementoLista.appendChild(espacio) */
 
 function crearElemento(descripcion, valor) {
 var spanNombre = document.createElement("span")
@@ -90,8 +92,8 @@ var corteLinea = document.createElement("br")
 elementoLista.appendChild(corteLinea)
 elementoLista.appendChild(botonBorrar);
 
- botonBorrar.onclick = function() {
-// this.parentNode.style.display = 'none';
+/*  botonBorrar.onclick = function() {
+//this.parentNode.style.display = 'none';
 botonBorrar.parentNode.remove()
-  }
+  } */
 }
